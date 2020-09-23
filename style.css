@@ -24,7 +24,7 @@ nav {
 
 .timer {
   margin-left: auto;
-  padding-right: ;
+  padding-right: 0;
 }
 
 .quiz-box {
@@ -33,8 +33,19 @@ nav {
   border: 2px solid black;
   background-color: white;
   height: 100px;
+  padding-bottom: 16rem;
 }
 
-.start-page {
+#start-page {
   margin: 1rem;
+}
+
+.start-style {
+  padding-top: 1rem;
+}
+
+#start {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 18px;
 }

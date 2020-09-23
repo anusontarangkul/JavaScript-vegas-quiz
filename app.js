@@ -18,7 +18,7 @@ push initials and score to local storage
 
 // DOM variables
 var startButton = document.getElementById("start");
-
+var startPage_section = document.getElementById("start-page");
 //Set attribute class to (.hide) to hide the div
 
 var questionsArray = [
@@ -66,5 +66,5 @@ var questionsArray = [
 
 //Start quiz
 startButton.addEventListener("click", function () {
-  console.log("test");
+  startPage_section.classList.add("hide");
 });
