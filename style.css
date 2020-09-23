@@ -31,7 +31,10 @@ nav {
   text-align: center;
   margin: 2rem 4rem 0rem 4rem;
   border: 2px solid black;
-  box-sizing: 2px 2px 2px 2px;
   background-color: white;
-  height: 90%;
+  height: 100px;
+}
+
+.start-page {
+  margin: 1rem;
 }
