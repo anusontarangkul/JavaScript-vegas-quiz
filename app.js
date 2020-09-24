@@ -23,6 +23,7 @@ var questionPage_section = document.getElementById("question-page");
 var questionName_h2 = document.getElementById("question-name");
 var choices_btn = document.getElementById("answer-buttons");
 var choices = Array.from(document.getElementsByClassName(""));
+var nextButton_div = document.getElementById("next-btn");
 
 var shuffledQuestions;
 var currentQuestionIndex;
@@ -85,6 +86,7 @@ startButton.addEventListener("click", function () {
 });
 
 function setNextQuestion() {
+  resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
@@ -102,14 +104,10 @@ function showQuestion(question) {
   });
 
   function selectAnswer() {}
-  function resetState() {
-    nextButton.classList.add("hide");
-  }
-
-  // questionName_h2.innerHTML = questionsArray[0].question;
-  // questionsArray[0].question.choices.forEach((choices) => {
-  //   var button = document.createElement("button");
-  //   button.innerTest = choices.text;
+}
+function resetState() {}
+while (choices_btn.firstChild) {
+  choices_btn.removeChild(choices_btn.firstChild);
 }
 
 var questionArray = [
