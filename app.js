@@ -19,6 +19,11 @@ push initials and score to local storage
 // DOM variables
 var startButton = document.getElementById("start");
 var startPage_section = document.getElementById("start-page");
+var questionPage_section = document.getElementById("question-page");
+var questionName_h2 = document.getElementById("question-name");
+var choices_btn = document.getElementById("choices");
+
+var shuffledQuestions, currentQuestionIndex;
 //Set attribute class to (.hide) to hide the div
 
 var questionsArray = [
@@ -67,4 +72,47 @@ var questionsArray = [
 //Start quiz
 startButton.addEventListener("click", function () {
   startPage_section.classList.add("hide");
+  // shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+  // currentQuestionIndex = 0;
+  questionPage_section.classList.remove("hide");
+  setInterval(updateTimer, 1000);
+  shuffledQuestions = questionArray.sort(() => Math.random() - 0.5);
+  setNextQuestion();
 });
+
+function setNextQuestion() {
+  showQuestion(shuffledQuestions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+  questionName_h2 = "What is the oldest hotel in Las Vegas?";
+
+  // questionName_h2.innerHTML = questionsArray[0].question;
+  // questionsArray[0].question.choices.forEach((choices) => {
+  //   var button = document.createElement("button");
+  //   button.innerTest = choices.text;
+}
+
+var questionArray = [
+  {
+    question: "What is the oldest hotel in Las Vegas?",
+    answers: [
+      { text: "Golden Gate Hotel", correct: true },
+      { text: "Golden Nugget", correct: false },
+      { text: "Frontier", correct: false },
+      { text: "Flamingo", correct: false },
+    ],
+  },
+];
+
+var startingMinutes = 5;
+var secondsTime = startingMinutes * 60;
+var timer_span = document.getElementById("timer");
+
+function updateTimer() {
+  var minutes = Math.floor(secondsTime / 60);
+  var seconds = secondsTime % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  timer_span.innerHTML = `${minutes}:${seconds}`;
+  secondsTime--;
+}

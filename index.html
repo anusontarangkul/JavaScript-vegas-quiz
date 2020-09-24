@@ -9,22 +9,28 @@
   <body>
     <nav>
       <a href="./high-score.html">View HighScores</a>
-      <div class="timer">Time Remaining: <span id="timer">0</span></div>
+      <div class="timer">Time Remaining: <span id="timer"></span></div>
     </nav>
     <main class="quiz-box">
-    <div id="start-page">
+    <section id="start-page" class="box-format">
       <h1 class="start-style">Las Vegas Trivia</h1>
       <p class="start-style">
         Do you think you know Las Vegas well? This is a 7 question multiple choice quiz to test your knowledge about Las Vegas.
         You have 5 minutes. If you answer a question wrong, you lose 30 seconds. Good luck!
       </p>
       <button id="start">Start</button>
-    </div>
+    </section>
 
-    <div>
-      <h2 class="question-name"></h2>
-      <div class="choices"></div>
-    </div>
+    <section class="hide box-format" id="question-page">
+      <h2 id="question-name" class="start-style"></h2>
+      <div id="answer-buttons" class="btn-grid">
+        <button class ="btn answer" data-number="1">Answer 1</button>
+        <button class ="btn answer" data-number="2">Answer 2</button>
+        <button class ="btn answer" data-number="3">Answer 3</button>
+        <button class ="btn answer" data-number="4">Answer 4</button>
+      </div>
+ 
+    </section>
     <div class="hide">
       <h2 class="final-score">Score</h2>
       <input type="text" maxlength="3" />

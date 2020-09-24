@@ -15,6 +15,12 @@
 }
 body {
   background-color: rgb(233, 233, 202);
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 }
 nav {
   background-color: lightblue;
@@ -34,9 +40,11 @@ nav {
   background-color: white;
   height: 100px;
   padding-bottom: 16rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem 0.1rem;
 }
 
-#start-page {
+.box-format {
   margin: 1rem;
 }
 
@@ -48,4 +56,23 @@ nav {
   margin-top: 1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 18px;
+}
+
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem;
+  margin: 2rem 1.5rem 1rem 1.5rem;
+}
+
+.btn {
+  padding: 0.5rem 0.5rem;
+}
+
+.btn.correct {
+  background-color: green;
+}
+
+.btn.wrong {
+  background-color: red;
 }
