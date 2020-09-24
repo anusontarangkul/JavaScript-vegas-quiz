@@ -11,81 +11,45 @@ Once questions are all complete or time runs out,
 display initials and score
 push initials and score to local storage
 
-
+TO DO
+-Figure out how to have last question show answers
+-Have time elapse affect quiz
+-Deduct time on wrong answer
+-Display Score at end
+-Enter initials and score to storage
+-Display initials and score in order on View
 
 
 */
 
-// DOM variables
-var startButton = document.getElementById("start");
-var startPage_section = document.getElementById("start-page");
-var questionPage_section = document.getElementById("question-page");
-var questionName_h2 = document.getElementById("question-name");
-var choices_btn = document.getElementById("answer-buttons");
+// Global variables
+var startButtonElement = document.getElementById("start");
+var startPageElement = document.getElementById("start-page");
+var questionPageElement = document.getElementById("question-page");
+var questionNameElement = document.getElementById("question-name");
+var choicesElement = document.getElementById("answer-buttons");
 var choices = Array.from(document.getElementsByClassName(""));
-var nextButton_btn = document.getElementById("next-btn");
-var finalScore_section = document.getElementById("final-score");
-var scoreSubmit_btn = document.getElementById("score-submit");
+var nextButtonElement = document.getElementById("next-btn");
+var finalScoreElement = document.getElementById("final-score");
+var scoreSubmitElement = document.getElementById("score-submit");
+var scoreInputElement = document.getElementById("score-input");
+var displayScoreElement = document.getElementById("display-score");
 
 var shuffledQuestions;
 var currentQuestionIndex;
-//Set attribute class to (.hide) to hide the div
-
-var questionsArray = [
-  {
-    question: "What is the oldest hotel in Las Vegas?",
-    choices: ["Golden Gate Hotel", "Golden Nugget", "Frontier", "Flamingo"],
-    answer: "Golden Gate Hotel",
-  },
-  {
-    question: "How much does the bronze lion at the MGM Grand Hotel weight?",
-    choices: ["35 tons", "40 tons", "45 tons", "50 tons"],
-    answer: "50 tons",
-  },
-  {
-    question: "In what year was the city of Las Vegas oficially founded?",
-    choices: ["1897", "1901", "1905", "1911"],
-    answer: "1905",
-  },
-  {
-    question: "How long is the Las Vegas Strip?",
-    choices: ["4 miles", "6 miles", "8 miles", "10 miles"],
-    answer: "4 miles",
-  },
-  {
-    question: "Which casino has an erupting volcano?",
-    choices: ["MGM Grand", "Wynn", "Mirage", "Aria"],
-    answer: "Mirage",
-  },
-  {
-    question: "Which casino has the David Copperfiled show?",
-    choices: ["MGM Grand", "Aria", "Palazzo", "Caesars Palace"],
-    answer: "MGM Grand",
-  },
-  {
-    question: "What does Las Vegas mean?",
-    choices: [
-      "Desert Oasis",
-      "Place of Entertainment",
-      "Life in Sand",
-      "The Meadows",
-    ],
-    answer: "The Meadows",
-  },
-];
+var playerScore = 0;
 
 //Start quiz
-startButton.addEventListener("click", function () {
-  startPage_section.classList.add("hide");
-  questionPage_section.classList.remove("hide");
+startButtonElement.addEventListener("click", function () {
+  startPageElement.classList.add("hide");
+  questionPageElement.classList.remove("hide");
   setInterval(updateTimer, 1000);
   shuffledQuestions = questionArray.sort(() => Math.random() - 0.5);
   currentQuestionIndex = 0;
-  console.log(shuffledQuestions);
   setNextQuestion();
 });
 
-nextButton_btn.addEventListener("click", function () {
+nextButtonElement.addEventListener("click", function () {
   currentQuestionIndex++;
   setNextQuestion();
 });
@@ -96,7 +60,7 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
-  questionName_h2.innerText = question.question;
+  questionNameElement.innerText = question.question;
   question.answers.forEach((answer) => {
     var button = document.createElement("button");
     button.innerText = answer.text;
@@ -105,22 +69,26 @@ function showQuestion(question) {
       button.dataset.correct = answer.correct;
     }
     button.addEventListener("click", selectAnswer);
-    choices_btn.appendChild(button);
+    choicesElement.appendChild(button);
   });
 }
 
 function selectAnswer(e) {
   var selectedButton = e.target;
-  console.log(selectedButton);
   var correct = selectedButton.dataset.correct;
-  Array.from(choices_btn.children).forEach((button) => {
+  if (correct) {
+    playerScore++;
+    console.log(playerScore);
+  } else {
+    startingTime -= 5;
+  }
+  Array.from(choicesElement.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    nextButton_btn.classList.remove("hide");
+    nextButtonElement.classList.remove("hide");
   } else {
-    questionPage_section.classList.add("hide");
-    finalScore_section.classList.remove("hide");
+    endQuiz();
   }
 }
 
@@ -139,10 +107,10 @@ function clearStatusClass(element) {
 }
 
 function resetState() {
-  while (choices_btn.firstChild) {
-    choices_btn.removeChild(choices_btn.firstChild);
+  while (choicesElement.firstChild) {
+    choicesElement.removeChild(choicesElement.firstChild);
   }
-  nextButton_btn.classList.add("hide");
+  nextButtonElement.classList.add("hide");
 }
 
 var questionArray = [
@@ -211,23 +179,40 @@ var questionArray = [
   },
 ];
 
-var startingMinutes = 5;
-var secondsTime = startingMinutes * 60;
-var timer_span = document.getElementById("timer");
+// Timer
+var startingTime = 90;
+var timerElement = document.getElementById("timer");
 
 function updateTimer() {
-  var minutes = Math.floor(secondsTime / 60);
-  var seconds = secondsTime % 60;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  timer_span.innerHTML = `${minutes}:${seconds}`;
-  secondsTime--;
+  timerElement.textContent = startingTime;
+  startingTime--;
+  if (startingTime <= 0) {
+    endQuiz();
+  }
 }
 
-var savedScore = {
-  name: "DA",
-  score: "90",
-};
-var convertString = JSON.stringify(savedScore);
-localStorage.setItem("scores", "test");
-//Submit name
-// scoreSubmit_btn.addEventListener("submit", function () {
+function endQuiz() {
+  startingTime = 0;
+  questionPageElement.classList.add("hide");
+  finalScoreElement.classList.remove("hide");
+  displayScoreElement.textContent = playerScore;
+}
+
+// var savedScore = {
+//   name: "DA",
+//   score: "90",
+// };
+// var convertString = JSON.stringify(savedScore);
+// localStorage.setItem("scores", "test");
+
+scoreSubmitElement.addEventListener("click", function () {
+  var initials = scoreInputElement.value;
+  var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+  var newScore = {
+    score: playerScore,
+    initials: initials,
+  };
+  highScores.push(newScore);
+  window.localStorage.setItem("highScores", JSON.stringify(highScores));
+  location.reload();
+});

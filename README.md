@@ -5,9 +5,9 @@ Vegas quiz to test your knowledge!
 ## Description
 
 [Deployment](https://anusontarangkul.github.io/vegas-quiz/)
-This is a fun Vegas trivia quiz to test you about how well you know Vegas. This is a timed 5 minutes quiz to answer 7 questions. If you get a question wrong, 30 seconds are deducted from the clock. When you finish all of the questions or if time runs up, the quiz is over. You can enter your initials and your score will be saved in the local server.
+This is a fun Vegas trivia quiz to test you about how well you know Vegas. This is a timed 90 seconds quiz to answer 7 questions. If you get a question wrong, 5 seconds are deducted from the clock. When you finish all of the questions or if time runs up, the quiz is over. You can enter your initials and your score will be saved in the local server.
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot-readme.png)
 
 ## Technologies
 

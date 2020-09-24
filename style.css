@@ -5,8 +5,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Concert+One&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   font-family: "Concert One", sans-serif;
 }
@@ -79,4 +77,8 @@ nav {
 
 #next-btn {
   margin-bottom: 1px;
+}
+
+.display-page {
+  margin-left: 2rem;
 }
