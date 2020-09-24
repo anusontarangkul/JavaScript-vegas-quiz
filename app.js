@@ -25,6 +25,7 @@ var choices_btn = document.getElementById("answer-buttons");
 var choices = Array.from(document.getElementsByClassName(""));
 var nextButton_btn = document.getElementById("next-btn");
 var finalScore_section = document.getElementById("final-score");
+var scoreSubmit_btn = document.getElementById("score-submit");
 
 var shuffledQuestions;
 var currentQuestionIndex;
@@ -111,7 +112,7 @@ function showQuestion(question) {
 function selectAnswer(e) {
   var selectedButton = e.target;
   console.log(selectedButton);
-  const correct = selectedButton.dataset.correct;
+  var correct = selectedButton.dataset.correct;
   Array.from(choices_btn.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
@@ -141,6 +142,7 @@ function resetState() {
   while (choices_btn.firstChild) {
     choices_btn.removeChild(choices_btn.firstChild);
   }
+  nextButton_btn.classList.add("hide");
 }
 
 var questionArray = [
@@ -220,3 +222,12 @@ function updateTimer() {
   timer_span.innerHTML = `${minutes}:${seconds}`;
   secondsTime--;
 }
+
+var savedScore = {
+  name: "DA",
+  score: "90",
+};
+var convertString = JSON.stringify(savedScore);
+localStorage.setItem("scores", "test");
+//Submit name
+// scoreSubmit_btn.addEventListener("submit", function () {
