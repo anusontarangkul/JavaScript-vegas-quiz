@@ -75,8 +75,6 @@ var questionsArray = [
 //Start quiz
 startButton.addEventListener("click", function () {
   startPage_section.classList.add("hide");
-  // shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  //
   questionPage_section.classList.remove("hide");
   setInterval(updateTimer, 1000);
   shuffledQuestions = questionArray.sort(() => Math.random() - 0.5);
@@ -102,12 +100,35 @@ function showQuestion(question) {
     button.addEventListener("click", selectAnswer);
     choices_btn.appendChild(button);
   });
-
-  function selectAnswer() {}
 }
-function resetState() {}
-while (choices_btn.firstChild) {
-  choices_btn.removeChild(choices_btn.firstChild);
+
+function selectAnswer(e) {
+  var selectedButton = e.target;
+  console.log(selectedButton);
+  const correct = selectedButton.dataset.correct;
+  Array.from(choices_btn.children).forEach((button) => {
+    setStatusClass(button, button.dataset.correct);
+  });
+}
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element);
+  if (correct) {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+}
+
+function clearStatusClass(element) {
+  element.classList.remove("correct");
+  element.classList.remove("wrong");
+}
+
+function resetState() {
+  while (choices_btn.firstChild) {
+    choices_btn.removeChild(choices_btn.firstChild);
+  }
 }
 
 var questionArray = [

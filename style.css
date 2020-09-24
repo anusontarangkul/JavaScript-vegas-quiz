@@ -69,10 +69,10 @@ nav {
   padding: 0.5rem 0.5rem;
 }
 
-.btn.correct {
+.correct {
   background-color: green;
 }
 
-.btn.wrong {
+.wrong {
   background-color: red;
 }
