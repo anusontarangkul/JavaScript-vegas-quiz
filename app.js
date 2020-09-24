@@ -22,8 +22,10 @@ var startPage_section = document.getElementById("start-page");
 var questionPage_section = document.getElementById("question-page");
 var questionName_h2 = document.getElementById("question-name");
 var choices_btn = document.getElementById("choices");
+var choices = Array.from(document.getElementsByClassName(""));
 
-var shuffledQuestions, currentQuestionIndex;
+var shuffledQuestions;
+var currentQuestionIndex;
 //Set attribute class to (.hide) to hide the div
 
 var questionsArray = [
@@ -73,10 +75,12 @@ var questionsArray = [
 startButton.addEventListener("click", function () {
   startPage_section.classList.add("hide");
   // shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-  // currentQuestionIndex = 0;
+  //
   questionPage_section.classList.remove("hide");
   setInterval(updateTimer, 1000);
   shuffledQuestions = questionArray.sort(() => Math.random() - 0.5);
+  currentQuestionIndex = 0;
+  console.log(shuffledQuestions);
   setNextQuestion();
 });
 
@@ -85,7 +89,7 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
-  questionName_h2 = "What is the oldest hotel in Las Vegas?";
+  questionName_h2.innerText = question.question;
 
   // questionName_h2.innerHTML = questionsArray[0].question;
   // questionsArray[0].question.choices.forEach((choices) => {
