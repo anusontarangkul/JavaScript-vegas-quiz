@@ -21,7 +21,7 @@ var startButton = document.getElementById("start");
 var startPage_section = document.getElementById("start-page");
 var questionPage_section = document.getElementById("question-page");
 var questionName_h2 = document.getElementById("question-name");
-var choices_btn = document.getElementById("choices");
+var choices_btn = document.getElementById("answer-buttons");
 var choices = Array.from(document.getElementsByClassName(""));
 
 var shuffledQuestions;
@@ -90,6 +90,21 @@ function setNextQuestion() {
 
 function showQuestion(question) {
   questionName_h2.innerText = question.question;
+  question.answers.forEach((answer) => {
+    var button = document.createElement("button");
+    button.innerText = answer.text;
+    button.classList.add("btn");
+    if (answer.correct) {
+      button.dataset.correct = answer.correct;
+    }
+    button.addEventListener("click", selectAnswer);
+    choices_btn.appendChild(button);
+  });
+
+  function selectAnswer() {}
+  function resetState() {
+    nextButton.classList.add("hide");
+  }
 
   // questionName_h2.innerHTML = questionsArray[0].question;
   // questionsArray[0].question.choices.forEach((choices) => {
