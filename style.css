@@ -38,7 +38,7 @@ nav {
   margin: 2rem 4rem 0rem 4rem;
   border: 2px solid black;
   background-color: white;
-  height: 100px;
+  height: 15rem;
   padding-bottom: 16rem;
   border-radius: 1rem;
   box-shadow: 0 0 0.5rem 0.1rem;
@@ -52,7 +52,7 @@ nav {
   padding-top: 1rem;
 }
 
-#start {
+.start {
   margin-top: 1rem;
   padding: 0.5rem 1rem 0.5rem 1rem;
   font-size: 18px;
@@ -75,4 +75,8 @@ nav {
 
 .wrong {
   background-color: red;
+}
+
+#next-btn {
+  margin-bottom: 1px;
 }

@@ -23,7 +23,8 @@ var questionPage_section = document.getElementById("question-page");
 var questionName_h2 = document.getElementById("question-name");
 var choices_btn = document.getElementById("answer-buttons");
 var choices = Array.from(document.getElementsByClassName(""));
-var nextButton_div = document.getElementById("next-btn");
+var nextButton_btn = document.getElementById("next-btn");
+var finalScore_section = document.getElementById("final-score");
 
 var shuffledQuestions;
 var currentQuestionIndex;
@@ -83,6 +84,11 @@ startButton.addEventListener("click", function () {
   setNextQuestion();
 });
 
+nextButton_btn.addEventListener("click", function () {
+  currentQuestionIndex++;
+  setNextQuestion();
+});
+
 function setNextQuestion() {
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -109,6 +115,12 @@ function selectAnswer(e) {
   Array.from(choices_btn.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    nextButton_btn.classList.remove("hide");
+  } else {
+    questionPage_section.classList.add("hide");
+    finalScore_section.classList.remove("hide");
+  }
 }
 
 function setStatusClass(element, correct) {
@@ -132,6 +144,24 @@ function resetState() {
 }
 
 var questionArray = [
+  {
+    question: "What is the oldest hotel in Las Vegas?",
+    answers: [
+      { text: "Golden Gate Hotel", correct: true },
+      { text: "Golden Nugget", correct: false },
+      { text: "Frontier", correct: false },
+      { text: "Flamingo", correct: false },
+    ],
+  },
+  {
+    question: "How much does the bronze lion at the MGM Grand Hotel weight?",
+    answers: [
+      { text: "35 tons", correct: false },
+      { text: "40 tons", correct: false },
+      { text: "45 tons", correct: false },
+      { text: "50 tons", correct: true },
+    ],
+  },
   {
     question: "What is the oldest hotel in Las Vegas?",
     answers: [

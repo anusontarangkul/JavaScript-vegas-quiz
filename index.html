@@ -18,7 +18,7 @@
         Do you think you know Las Vegas well? This is a 7 question multiple choice quiz to test your knowledge about Las Vegas.
         You have 5 minutes. If you answer a question wrong, you lose 30 seconds. Good luck!
       </p>
-      <button id="start">Start</button>
+      <button id="start" class="start">Start</button>
     </section>
 
     <section class="hide box-format" id="question-page">
@@ -29,16 +29,15 @@
         <button class ="btn answer" data-number="3">Answer 3</button>
         <button class ="btn answer" data-number="4">Answer 4</button>
       </div>
- 
+      <button id="next-btn" class="next-btn btn hide">Next</button>
     </section>
-    <div class="hide">
-      <h2 class="final-score">Score</h2>
+    <section id="final-score" class="hide">
+      <h2>Score</h2>
       <input type="text" maxlength="3" />
       <button>submit</button>
-    </div>
-    <div class="controls">
-      <button id="next-btn" class="next-btn"></button>
-    </div>
+    </section>
+    
+    </main>
     <script src="./app.js"></script>
   </body>
 </main>
