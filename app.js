@@ -1,27 +1,3 @@
-//
-/*
-Openinng page with title and start button
-New div with question and 4 multiple choice questions
-Add Nav Bar with high score page and timer
-Start timer
-Have 5 questions and answers
-New question after evaluation
-If false, deduct time
-Once questions are all complete or time runs out,
-display initials and score
-push initials and score to local storage
-
-TO DO
--Figure out how to have last question show answers
--Have time elapse affect quiz
--Deduct time on wrong answer
--Display Score at end
--Enter initials and score to storage
--Display initials and score in order on View
-
-
-*/
-
 // Global variables
 var startButtonElement = document.getElementById("start");
 var startPageElement = document.getElementById("start-page");
@@ -78,7 +54,6 @@ function selectAnswer(e) {
   var correct = selectedButton.dataset.correct;
   if (correct) {
     playerScore++;
-    console.log(playerScore);
   } else {
     startingTime -= 5;
   }
@@ -197,13 +172,6 @@ function endQuiz() {
   finalScoreElement.classList.remove("hide");
   displayScoreElement.textContent = playerScore;
 }
-
-// var savedScore = {
-//   name: "DA",
-//   score: "90",
-// };
-// var convertString = JSON.stringify(savedScore);
-// localStorage.setItem("scores", "test");
 
 scoreSubmitElement.addEventListener("click", function () {
   var initials = scoreInputElement.value;
