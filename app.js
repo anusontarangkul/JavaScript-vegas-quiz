@@ -39,7 +39,7 @@ var questionsArray = [
   {
     question: "How much does the bronze lion at the MGM Grand Hotel weight?",
     choices: ["35 tons", "40 tons", "45 tons", "50 tons"],
-    answer: "faran",
+    answer: "50 tons",
   },
   {
     question: "In what year was the city of Las Vegas oficially founded?",
@@ -57,7 +57,7 @@ var questionsArray = [
     answer: "Mirage",
   },
   {
-    question: "Which casino has the David Copperfiled show",
+    question: "Which casino has the David Copperfiled show?",
     choices: ["MGM Grand", "Aria", "Palazzo", "Caesars Palace"],
     answer: "MGM Grand",
   },
@@ -163,12 +163,48 @@ var questionArray = [
     ],
   },
   {
-    question: "What is the oldest hotel in Las Vegas?",
+    question: "In what year was the city of Las Vegas oficially founded?",
     answers: [
-      { text: "Golden Gate Hotel", correct: true },
-      { text: "Golden Nugget", correct: false },
-      { text: "Frontier", correct: false },
-      { text: "Flamingo", correct: false },
+      { text: "1897", correct: false },
+      { text: "1901", correct: false },
+      { text: "1905", correct: true },
+      { text: "1911", correct: false },
+    ],
+  },
+  {
+    question: "How long is the Las Vegas Strip?",
+    answers: [
+      { text: "4 miles", correct: true },
+      { text: "6 miles", correct: false },
+      { text: "8 miles", correct: false },
+      { text: "10 miles", correct: false },
+    ],
+  },
+  {
+    question: "Which casino has an erupting volcano?",
+    answers: [
+      { text: "MGM Grand", correct: false },
+      { text: "Wynn", correct: false },
+      { text: "Mirage", correct: true },
+      { text: "Aria", correct: false },
+    ],
+  },
+  {
+    question: "Which casino has the David Copperfiled show?",
+    answers: [
+      { text: "MGM Grand", correct: true },
+      { text: "Aria", correct: false },
+      { text: "Palazzo", correct: false },
+      { text: "Caesars Palace", correct: false },
+    ],
+  },
+  {
+    question: "What does Las Vegas mean?",
+    answers: [
+      { text: "Desert Oasis", correct: false },
+      { text: "Place of Entertainment", correct: false },
+      { text: "Life in Sand", correct: false },
+      { text: "The Meadows", correct: true },
     ],
   },
 ];
